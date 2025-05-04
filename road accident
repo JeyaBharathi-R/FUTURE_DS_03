@@ -1,0 +1,31 @@
+Table.AddColumn(#"Previous Step", "DayOfWeek", each Date.DayOfWeekName([Date]), type text)
+-- 1. Total Accidents
+Total Accidents = COUNTROWS('AccidentData')
+
+-- 2. Accidents by Cause
+Accidents by Cause = COUNTROWS('AccidentData')
+
+-- 3. Severity Score
+Severity Score = 
+    SUM('AccidentData'[Fatalities]) + 
+    0.5 * SUM('AccidentData'[Injuries])
+
+-- 4. Average Satisfaction
+Average Satisfaction = AVERAGE('AccidentData'[Satisfaction])
+
+-- 5. Accidents by Ticket Priority
+Accidents by Priority = COUNTROWS('AccidentData')
+
+-- 6. Resolution Time (Hours)
+Resolution Time (Hours) = 
+    DATEDIFF('AccidentData'[ReportedTime], 'AccidentData'[ResolvedTime], HOUR)
+
+-- 7. Accidents Per Day of Week
+Accidents Per Day = COUNTROWS('AccidentData')
+
+-- 8. Accidents Per Hour
+Accidents Per Hour = COUNTROWS('AccidentData')
+
+-- 9. Accidents by Location (for map)
+Accidents by Location = COUNTROWS('AccidentData')
+
